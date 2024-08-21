@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"moduleDetection": "force",
+		"module": "CommonJS",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+    "baseUrl": "src",
+    "paths": {
+        "@/*": ["*"]
+    }
+	}
+}
