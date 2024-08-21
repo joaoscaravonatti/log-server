@@ -20,12 +20,13 @@ export class RabbitMQListenerAdapter implements Listener {
 
     for (const listener of this.channelListeners) {
       const channel = await this.connection.createChannel()
-      await channel.assertQueue(listener.queue, { durable: false })
+      await channel.assertQueue(listener.queue, { durable: true })
 
       channel.consume(listener.queue, (message) => {
         const json = JSON.parse(message.content.toString())
         listener.useCase.run(json).catch(console.error)
-      }, { noAck: true })
+        channel.ack(message)
+      }, { noAck: false })
     }
   }
 

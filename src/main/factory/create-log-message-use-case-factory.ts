@@ -5,6 +5,6 @@ import { CreateLogMessageUseCase } from '@/use-case/create-log-message-use-case'
 
 export const createLogMessageUseCaseFactory = () => new CreateLogMessageUseCase(
   new CryptoGenerateIdAdapter(),
-  new FsPersisLogMessageAdapter([__dirname, '..', '..', 'database.txt']),
+  new FsPersisLogMessageAdapter([__dirname, '..', '..', '..', 'database.txt']),
   new NodeDbusNotifierNotifyAdapter()
 )
