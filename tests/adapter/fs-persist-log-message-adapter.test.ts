@@ -1,4 +1,4 @@
-import { FsPersisLogMessageAdapter } from '@/adapter/fs-persist-log-message-adapter'
+import { FsPersistLogMessageAdapter } from '@/adapter/fs-persist-log-message-adapter'
 import { LogMessage } from '@/model/log-message'
 import path from 'node:path'
 import fs from 'node:fs'
@@ -9,11 +9,11 @@ jest.mock('node:fs', () => ({
   }
 }))
 
-describe('FsPersisLogMessageAdapter', () => {
-  let sut: FsPersisLogMessageAdapter
+describe('FsPersistLogMessageAdapter', () => {
+  let sut: FsPersistLogMessageAdapter
 
   beforeAll(() => {
-    sut = new FsPersisLogMessageAdapter(['path'])
+    sut = new FsPersistLogMessageAdapter(['path'])
   })
 
   it('should call appendFile() correctly', async () => {

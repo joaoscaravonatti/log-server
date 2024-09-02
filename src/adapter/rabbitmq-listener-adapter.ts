@@ -34,3 +34,4 @@ export class RabbitMQListenerAdapter implements Listener {
     await this.connection.close()
   }
 }
+

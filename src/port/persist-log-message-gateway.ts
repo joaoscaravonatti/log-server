@@ -1,5 +1,5 @@
 import { LogMessage } from '@/model/log-message'
 
-export interface PersisLogMessageGateway {
+export interface PersistLogMessageGateway {
   persist (logMessage: LogMessage): Promise<void>
 }

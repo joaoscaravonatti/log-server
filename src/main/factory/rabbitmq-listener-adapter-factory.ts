@@ -1,4 +1,5 @@
 import { RabbitMQListenerAdapter, QueueListener } from '@/adapter/rabbitmq-listener-adapter'
 
-export const rabbitmqListenerAdapterFactory = (queueListeners: QueueListener[]) =>
-  new RabbitMQListenerAdapter('amqp://localhost', queueListeners)
+export const rabbitmqListenerAdapterFactory = (queueListeners: QueueListener[]) => {
+  return new RabbitMQListenerAdapter('amqp://localhost', queueListeners)
+}

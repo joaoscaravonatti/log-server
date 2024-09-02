@@ -1,9 +1,9 @@
-import { PersisLogMessageGateway } from '@/port/persist-log-message-gateway'
+import { PersistLogMessageGateway } from '@/port/persist-log-message-gateway'
 import { LogMessage } from '@/model/log-message'
 import path from 'node:path'
 import fs from 'node:fs'
 
-export class FsPersisLogMessageAdapter implements PersisLogMessageGateway {
+export class FsPersistLogMessageAdapter implements PersistLogMessageGateway {
   constructor (private readonly filePath: string[]) {}
 
   async persist (logMessage: LogMessage): Promise<void> {
