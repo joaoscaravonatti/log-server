@@ -6,15 +6,19 @@ jest.mock('node:crypto', () => ({
 }))
 
 describe('CryptoGenerateIdAdapter', () => {
+  let sut: CryptoGenerateIdAdapter
+
+  beforeAll(() => {
+    sut = new CryptoGenerateIdAdapter()
+  })
+
   it('should call randomUUID()', () => {
-    const sut = new CryptoGenerateIdAdapter()
     sut.generate()
 
     expect(crypto.randomUUID).toHaveBeenCalled()
   })
 
   it('should return a string', () => {
-    const sut = new CryptoGenerateIdAdapter()
     const result = sut.generate()
 
     expect(result).toBe('id')

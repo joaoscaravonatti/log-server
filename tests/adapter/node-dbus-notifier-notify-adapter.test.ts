@@ -9,8 +9,13 @@ jest.mock('node-dbus-notifier', () => ({
 }))
 
 describe('NodeDbusNotifierNotifyAdapter', () => {
+  let sut: NodeDbusNotifierNotifyAdapter
+
+  beforeAll(() => {
+    sut = new NodeDbusNotifierNotifyAdapter()
+  })
+
   it('should create a Notify object with correct params', () => {
-    const sut = new NodeDbusNotifierNotifyAdapter()
     const logMessage = LogMessage.create('id', 'info', 'content', new Date())
     sut.notify(logMessage)
 
@@ -22,10 +27,10 @@ describe('NodeDbusNotifierNotifyAdapter', () => {
   })
 
   it('should call show()', () => {
-    const sut = new NodeDbusNotifierNotifyAdapter()
     const logMessage = LogMessage.create('id', 'info', 'content', new Date())
     sut.notify(logMessage)
 
     expect(show).toHaveBeenCalled()
   })
 })
+
