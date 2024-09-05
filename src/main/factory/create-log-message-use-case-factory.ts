@@ -1,10 +1,15 @@
-import { CryptoGenerateIdAdapter } from '@/adapter/crypto-generate-id-adapter'
-import { FsPersistLogMessageAdapter } from '@/adapter/fs-persist-log-message-adapter'
-import { NodeDbusNotifierNotifyAdapter } from '@/adapter/node-dbus-notifier-notify-adapter'
 import { CreateLogMessageUseCase } from '@/use-case/create-log-message-use-case'
+import { nodeDbusNotifierAdapterFactory } from './node-dbus-notifier-adapter-factory'
+import { fsPersistLogMessageAdapter } from './fs-persist-log-message-adapter-factory'
+import { cryptoGenerateIdAdapterFactory } from './crypto-generate-id-adapter-factory'
+import { NotifierComposite } from '../composite/notifier-composite'
+import { nodemailerNotifierAdapterFactory } from './nodemailer-notifier-adapter-factory'
 
 export const createLogMessageUseCaseFactory = () => new CreateLogMessageUseCase({
-  generateIdGateway: new CryptoGenerateIdAdapter(),
-  persistLogMessageGateway: new FsPersistLogMessageAdapter([__dirname, '..', '..', '..', 'database.txt']),
-  notifyGateway: new NodeDbusNotifierNotifyAdapter()
+  generateIdGateway: cryptoGenerateIdAdapterFactory(),
+  persistLogMessageGateway: fsPersistLogMessageAdapter(), 
+  notifyGateway: new NotifierComposite([
+    nodeDbusNotifierAdapterFactory(),
+    nodemailerNotifierAdapterFactory()
+  ])
 })

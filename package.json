@@ -17,12 +17,14 @@
     "amqplib": "^0.10.4",
     "kafkajs": "^2.2.4",
     "node-dbus-notifier": "^0.3.6",
+    "nodemailer": "^6.9.15",
     "tsx": "^4.17.0"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.5",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.3.0",
+    "@types/nodemailer": "^6.4.15",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.4",
     "typescript": "^5.5.4"
